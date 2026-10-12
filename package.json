@@ -1,6 +1,6 @@
 {
   "name": "timer-histogram-ring-buffer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stores fixed-size latency samples in a ring buffer and computes percentiles without unbounded memory growth.",
   "type": "module",
   "main": "src/index.js",
