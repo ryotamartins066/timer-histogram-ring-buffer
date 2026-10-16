@@ -25,3 +25,10 @@ The name says "histogram" but the implementation stores full-fidelity samples an
 `percentile()` on an empty buffer returns `null`, not `0`, because `0` is a plausible latency and would be a silent lie. Callers that need a numeric default must check explicitly.
 
 `push()` rejects `NaN`, `Infinity`, and negative numbers. A latency of `Infinity` is never useful and silently corrupts `mean()` and every percentile downstream, so it fails fast instead.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
